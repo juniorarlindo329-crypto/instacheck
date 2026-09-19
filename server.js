@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 10000;
 
-// Arquivos do app estão direto na raiz do GitHub
+// Serve os arquivos que estão direto na raiz do repositório
 app.use(express.static(__dirname));
 
 app.get('*', (req, res) => {

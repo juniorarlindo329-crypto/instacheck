@@ -42,12 +42,19 @@ Depois acesse `http://localhost:10000`.
 5. Publique.
 
 ## Estrutura
+Todos os arquivos ficam direto na raiz do repositório para facilitar o upload pelo celular:
+- `index.html` — interface.
+- `style.css` — visual.
+- `app.js` — análise e comparação.
+- `manifest.webmanifest` — PWA.
+- `sw.js` — cache básico.
 - `server.js` — servidor Express.
-- `public/index.html` — interface.
-- `public/style.css` — visual.
-- `public/app.js` — análise e comparação.
-- `public/manifest.webmanifest` — PWA.
-- `public/sw.js` — cache básico.
+- `package.json` — dependências e comando de inicialização.
+
+## Atualização 1.1
+- Arquivos organizados direto na raiz do GitHub.
+- Menu “Mais” com o crédito **Desenvolvido por JNR**.
+- `server.js` ajustado para essa estrutura.
 
 ## Exportação do Instagram
 Na Central de Contas, exporte as informações relacionadas a seguidores e seguindo. JSON é o formato recomendado; HTML também é aceito.

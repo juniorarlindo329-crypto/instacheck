@@ -124,3 +124,11 @@ dialog::backdrop{background:rgba(0,0,0,.72);backdrop-filter:blur(5px)}
   .app-shell{border:1px solid #242a38;border-radius:28px;overflow:hidden;min-height:calc(100vh - 48px)}
   .bottom-nav{width:520px;border-radius:0 0 28px 28px}
 }
+
+.developer-credit{
+  text-align:center;
+  margin:20px 0 14px!important;
+  font-weight:900;
+  color:#c687ff!important;
+  letter-spacing:.3px;
+}

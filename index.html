@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d14" />
+  <meta name="description" content="Compare seguidores e pessoas que você segue no Instagram sem informar sua senha." />
+  <title>InstaCheck</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">✓</div>
+        <div>
+          <h1>Insta<span>Check</span></h1>
+          <p>Organize quem você segue</p>
+        </div>
+      </div>
+      <button class="icon-btn" id="privacyBtn" aria-label="Privacidade">⌁</button>
+    </header>
+
+    <main>
+      <section id="homeView" class="view active">
+        <div class="hero">
+          <div class="eyebrow">ANÁLISE LOCAL E SEGURA</div>
+          <h2>Descubra quem <span>não segue você de volta</span></h2>
+          <p>Compare seus dados do Instagram sem informar senha e sem enviar seu arquivo para um servidor.</p>
+        </div>
+
+        <div class="security-card card">
+          <div class="shield">↓</div>
+          <div>
+            <strong>100% no seu aparelho</strong>
+            <p>Seu arquivo é processado no navegador. O app não precisa da sua senha do Instagram.</p>
+          </div>
+        </div>
+
+        <label class="upload-card" for="zipInput">
+          <div class="upload-icon">⇩</div>
+          <div>
+            <strong>Enviar dados do Instagram</strong>
+            <p>Selecione o arquivo .ZIP, .JSON ou .HTML exportado pela Central de Contas.</p>
+          </div>
+          <span class="arrow">›</span>
+        </label>
+        <input type="file" id="zipInput" accept=".zip,.json,.html,.htm" hidden />
+
+        <button class="how-btn" id="howBtn">
+          <span class="how-icon">?</span>
+          <span>Como baixar meus dados?</span>
+          <span>›</span>
+        </button>
+
+        <div id="status" class="status hidden"></div>
+
+        <section class="stats-section">
+          <div class="section-head">
+            <div>
+              <small>ÚLTIMA ANÁLISE</small>
+              <strong id="lastAnalysis">Nenhuma análise ainda</strong>
+            </div>
+            <button id="clearBtn" class="text-btn hidden">Limpar</button>
+          </div>
+
+          <div class="stats-grid">
+            <button class="stat-card" data-go="following">
+              <div class="stat-icon people">♟</div>
+              <div><strong id="followingCount">0</strong><span>Pessoas que você segue</span></div>
+            </button>
+            <button class="stat-card" data-go="followers">
+              <div class="stat-icon blue">♟</div>
+              <div><strong id="followersCount">0</strong><span>Seus seguidores</span></div>
+            </button>
+            <button class="stat-card danger" data-go="not-following-back">
+              <div class="stat-icon red">⊘</div>
+              <div><strong id="nonFollowersCount">0</strong><span>Não seguem você de volta</span></div>
+            </button>
+            <button class="stat-card success" data-go="mutuals">
+              <div class="stat-icon green">♟</div>
+              <div><strong id="mutualCount">0</strong><span>Seguidores mútuos</span></div>
+            </button>
+          </div>
+        </section>
+
+        <div class="tip">
+          <span>✦</span>
+          <p>Organize sua rede sem precisar procurar perfil por perfil.</p>
+        </div>
+      </section>
+
+      <section id="listView" class="view">
+        <div class="list-header">
+          <button id="backBtn" class="back-btn">‹</button>
+          <div>
+            <h2 id="listTitle">Não me seguem</h2>
+            <p id="listSubtitle">Pessoas que você segue, mas que não seguem você de volta.</p>
+          </div>
+        </div>
+
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Pesquisar pelo nome de usuário..." autocomplete="off" />
+        </div>
+
+        <div class="selection-bar">
+          <label class="select-all">
+            <input id="selectAll" type="checkbox">
+            <span class="fake-check"></span>
+            <strong id="selectAllText">Selecionar todos</strong>
+          </label>
+          <button id="openSelectedBtn" class="primary-small">Abrir selecionados</button>
+        </div>
+
+        <div id="progressCard" class="progress-card hidden">
+          <div>
+            <small>LIMPEZA MANUAL</small>
+            <strong id="progressText">0 de 0 concluídos</strong>
+          </div>
+          <button id="nextBtn">Abrir próximo</button>
+        </div>
+
+        <div id="userList" class="user-list"></div>
+
+        <div id="emptyList" class="empty hidden">
+          <div>✓</div>
+          <h3>Nenhum perfil aqui</h3>
+          <p>Faça uma análise ou altere sua pesquisa.</p>
+        </div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-nav="home">
+        <span>⌂</span><small>Início</small>
+      </button>
+      <button class="nav-item" data-nav="not-following-back">
+        <span>♟</span><small>Não me seguem</small>
+      </button>
+      <button class="nav-item" data-nav="removed">
+        <span>◷</span><small>Removidos</small>
+      </button>
+      <button class="nav-item" data-nav="more">
+        <span>•••</span><small>Mais</small>
+      </button>
+    </nav>
+  </div>
+
+  <dialog id="howDialog">
+    <div class="dialog-card">
+      <div class="dialog-head">
+        <h3>Como baixar seus dados</h3>
+        <button data-close="howDialog">×</button>
+      </div>
+      <ol>
+        <li>Abra o Instagram e entre na <strong>Central de Contas</strong>.</li>
+        <li>Procure por <strong>Suas informações e permissões</strong>.</li>
+        <li>Escolha a opção para <strong>baixar/exportar suas informações</strong>.</li>
+        <li>Selecione sua conta do Instagram e inclua informações de <strong>seguidores e seguindo</strong>.</li>
+        <li>Se puder escolher o formato, use <strong>JSON</strong>. HTML também funciona neste app.</li>
+        <li>Quando o arquivo ficar pronto, baixe o ZIP e selecione-o aqui.</li>
+      </ol>
+      <p class="dialog-note">Os nomes das telas podem mudar com atualizações do Instagram.</p>
+      <button class="dialog-primary" data-close="howDialog">Entendi</button>
+    </div>
+  </dialog>
+
+  <dialog id="privacyDialog">
+    <div class="dialog-card">
+      <div class="dialog-head">
+        <h3>Privacidade</h3>
+        <button data-close="privacyDialog">×</button>
+      </div>
+      <p>O processamento acontece no seu navegador. Este projeto não envia o ZIP para o servidor.</p>
+      <p>Também não pede login, senha, cookie ou código de autenticação do Instagram.</p>
+      <button class="dialog-primary" data-close="privacyDialog">Fechar</button>
+    </div>
+  </dialog>
+
+  <dialog id="moreDialog">
+    <div class="dialog-card">
+      <div class="dialog-head">
+        <h3>Sobre o InstaCheck</h3>
+        <button data-close="moreDialog">×</button>
+      </div>
+      <p>Versão 1.0 • análise local de seguidores.</p>
+      <p>O app separa os perfis. A confirmação de “Deixar de seguir” continua sendo feita no Instagram.</p>
+      <button class="dialog-primary" data-close="moreDialog">Fechar</button>
+    </div>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

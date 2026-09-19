@@ -1,0 +1,9 @@
+{
+  "name": "InstaCheck",
+  "short_name": "InstaCheck",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080a10",
+  "theme_color": "#0b0d14",
+  "description": "Compare seguidores e seguindo localmente."
+}

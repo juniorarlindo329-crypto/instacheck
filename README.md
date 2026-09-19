@@ -58,3 +58,9 @@ Todos os arquivos ficam direto na raiz do repositório para facilitar o upload p
 
 ## Exportação do Instagram
 Na Central de Contas, exporte as informações relacionadas a seguidores e seguindo. JSON é o formato recomendado; HTML também é aceito.
+
+
+## Atualização 1.2
+- Logo do InstaCheck aplicada no topo do app, substituindo o ícone anterior.
+- Arquivo `instacheck-icon.png` incluído na raiz.
+- Logo completa `logo-neon-instacheck.png` incluída na raiz para uso futuro.
